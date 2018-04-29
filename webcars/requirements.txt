@@ -1,4 +1,0 @@
-django-heroku
-Django
-gunicorn
-psycopg2-binary
