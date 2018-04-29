@@ -1,1 +1,6 @@
 Django==2.0.0
+gunicorn
+whitenoise
+dj-database-url
+django-heroku
+psycopg2-binary
