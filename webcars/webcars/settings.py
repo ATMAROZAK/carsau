@@ -25,7 +25,7 @@ SECRET_KEY = '(ovk2)*#!b^)ow4!t82$!9fz=fl%yva-yp8^1ri3jhpxdy70g+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['carsau.herokuapp.com/', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -118,3 +118,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+LOGIN_REDIRECT_URL = '/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+import dj_database_udl
+dj_from_env = dj_database_udl.config()
+DATABASES['default'].update(db_from_env)
