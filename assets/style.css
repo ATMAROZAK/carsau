@@ -1,18 +1,38 @@
 /* #586069 */
 body {
-	background-color: #ff4d4d !important;
+	background-color: #f3f3f3 !important;
 }
 
 .container {
-	margin-top: 60px;
+	max-width: 1230px !important;
 }
 
-dt.col,
-dt.col-md-7 {
-	font-size: 15px;
-	font-weight: normal;
+.search {
+	margin-top: 40px;
 }
 
-dd.col {
+.search-body {
+	padding: 15px;
+}
+
+.info {
+	margin-top: 40px;
+}
+
+.el {
+	line-height: 5px;
+}
+
+.brand {
+	color: #000;
+	font-size: 120%;
+}
+
+.amount {
+	letter-spacing: 0px;
 	color: #586069;
+}
+
+.field {
+	margin: 20px;
 }
