@@ -38,8 +38,8 @@ body {
 	margin: 20px;
 }
 
-a:hover,
-a:focus {
+.field:hover,
+.field:focus {
 	background-color: #F44336 !important;
 	color: #F44336 !important;
 }
