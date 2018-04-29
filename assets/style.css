@@ -1,0 +1,18 @@
+/* #586069 */
+body {
+	background-color: #ff4d4d !important;
+}
+
+.container {
+	margin-top: 60px;
+}
+
+dt.col,
+dt.col-md-7 {
+	font-size: 15px;
+	font-weight: normal;
+}
+
+dd.col {
+	color: #586069;
+}
