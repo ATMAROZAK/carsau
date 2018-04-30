@@ -1,11 +1,6 @@
-{% extends "base.html" %}
+
 {% load static %}
 {% load i18n %}
-
-{% block title %}CARS AU{% endblock %}
-
-{% block content %}
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,8 +20,19 @@
 
   </head>
   <body>
+  {% block header %}
+    <a href="{% url 'index' %}">{% trans "Home" %}</a> |
+
+    {% if user.is_authenticated %}
+        {% trans "Logged in" %}: {{ user.get_username }}
+        (<a href="{% url 'auth_logout' %}">{% trans "Log out" %}</a> |
+        <a href="{% url 'auth_password_change' %}">{% trans "Change password" %}</a>)
+    {% else %}
+       <a href="{% url 'auth_login' %}">{% trans "Log In" %}</a>
+    {% endif %}
+    {% endblock %}
     <nav class="mb-1 navbar navbar-expand-lg navbar-dark">
-      <a class="navbar-brand" href="#">Cars AU</a>
+      <a class="navbar-brand" href="{% url 'index' %}">Cars AU</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
       </button>
@@ -40,7 +46,7 @@
           </li> -->
 
           <li class="nav-item">
-            <a class="nav-link waves-effect waves-light" data-toggle="dropdown" aria-haspopup="true">
+              <a class="nav-link waves-effect waves-light" data-toggle="dropdown" aria-haspopup="true" href="{% url 'auth_login' %}">
             <i class="fa fa-user"></i> Log in </a>
           </li>
 
@@ -266,4 +272,3 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/js/mdb.min.js"></script>
   </body>
 </html>
-{% endblock %}
