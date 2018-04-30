@@ -146,3 +146,5 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'djangomailtest01@gmail.com'
 EMAIL_HOST_PASSWORD = 'System2048'
 EMAIL_USE_TLS = True
+
+REGISTRATION_FORM = 'mainapp.forms.MyRegForm'
