@@ -1,7 +1,269 @@
 {% extends "base.html" %}
+{% load static %}
 {% load i18n %}
 
-{% block title %}Django Registration Test App{% endblock %}
+{% block title %}CARS AU{% endblock %}
 
 {% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Search</title>
+    <link href="{%  static 'css/style.css' %}" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/css/mdb.min.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <nav class="mb-1 navbar navbar-expand-lg navbar-dark">
+      <a class="navbar-brand" href="#">Cars AU</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+        <ul class="navbar-nav ml-auto">
+
+          <!--
+          <li class="nav-item">
+            <a class="nav-link waves-effect waves-light" href="#">
+            <i class="fa fa-envelope"></i> Contact</a>
+          </li> -->
+
+          <li class="nav-item">
+            <a class="nav-link waves-effect waves-light" data-toggle="dropdown" aria-haspopup="true">
+            <i class="fa fa-user"></i> Log in </a>
+          </li>
+
+        <!-- когда авторизован
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          <i class="fa fa-user"></i> Profile </a>
+          <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
+            <a class="dropdown-item waves-effect waves-light" href="#">My account</a>
+            <a class="dropdown-item waves-effect waves-light" href="#">Log out</a>
+          </div>
+        </li> -->
+
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 search">
+          <div class="bg-light z-depth-1">
+            <div class="container search-body">
+              <div class="row">
+                <div class="col-md-2 el">
+                  <a href="#" class="field">
+                    <h4 class="brand">Mazda</h4>
+                    <p class="amount">51258</p>
+                  </a>
+                  <a href="" class="field">
+                    <h4 class="brand">Toyota</h4>
+                    <p class="amount">51258</p>
+                  </a>
+                  <a href="#" class="field">
+                    <h4 class="brand">Ford</h4>
+                    <p class="amount">51258</p>
+                  </a>
+                  <a href="#" class="field">
+                    <h4 class="brand">Chevrolet</h4>
+                    <p class="amount">51258</p>
+                  </a>
+                  <a href="#" class="field">
+                    <h4 class="brand">Mercedes-Benz</h4>
+                    <p class="amount">51258</p>
+                  </a>
+                </div>
+                <div class="col-md-2 el">
+                  <a href="#" class="field">
+                    <h4 class="brand">Opel</h4>
+                    <p class="amount">51258</p>
+                  </a>
+                  <a href="#" class="field" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <h4 class="brand">Mitsubishi</h4>
+                    <p class="amount">51258</p>
+                  </a>
+                  <a href="#" class="field">
+                    <h4 class="brand">Cadilac</h4>
+                    <p class="amount">51258</p>
+                  </a>
+                  <a href="#" class="field">
+                    <h4 class="brand">Hyundai</h4>
+                    <p class="amount">51258</p>
+                  </a>
+                  <a href="#" class="field">
+                    <h4 class="brand">Jeep</h4>
+                    <p class="amount">51258</p>
+                  </a>
+                </div>
+                <div class="col-md-2 el">
+                  <a href="#" class="field">
+                    <h4 class="brand">Lexus</h4>
+                    <p class="amount">51258</p>
+                  </a>
+                  <a href="#" class="field">
+                    <h4 class="brand">Honda</h4>
+                    <p class="amount">51258</p>
+                  </a>
+                  <a href="#" class="field">
+                    <h4 class="brand">Infiniti</h4>
+                    <p class="amount">51258</p>
+                  </a>
+                  <a href="#" class="field">
+                    <h4 class="brand">Daewoo</h4>
+                    <p class="amount">51258</p>
+                  </a>
+                  <a href="#" class="field">
+                    <h4 class="brand">Fiat</h4>
+                    <p class="amount">51258</p>
+                  </a>
+                </div>
+                <div class="col-md-2 el">
+                  <a href="#" class="field">
+                    <h4 class="brand">Kia</h4>
+                    <p class="amount">51258</p>
+                  </a>
+                  <a href="#" class="field">
+                    <h4 class="brand">Dodge</h4>
+                    <p class="amount">51258</p>
+                  </a>
+                  <a href="#" class="field">
+                    <h4 class="brand">Nissan</h4>
+                    <p class="amount">51258</p>
+                  </a>
+                  <a href="#" class="field">
+                    <h4 class="brand">Renault</h4>
+                    <p class="amount">51258</p>
+                  </a>
+                  <a href="#" class="field">
+                    <h4 class="brand">Hummer</h4>
+                    <p class="amount">51258</p>
+                  </a>
+                </div>
+                <div class="col-md-2 el">
+                  <a href="#" class="field">
+                    <h4 class="brand">Suzuki</h4>
+                    <p class="amount">51258</p>
+                  </a>
+                  <a href="#" class="field">
+                    <h4 class="brand">Jaguar</h4>
+                    <p class="amount">51258</p>
+                  </a>
+                  <a href="#" class="field">
+                    <h4 class="brand">Volvo</h4>
+                    <p class="amount">51258</p>
+                  </a>
+                  <a href="#" class="field">
+                    <h4 class="brand">Subaru</h4>
+                    <p class="amount">51258</p>
+                  </a>
+                  <a href="#" class="field">
+                    <h4 class="brand">Land Rover</h4>
+                    <p class="amount">51258</p>
+                  </a>
+                </div>
+                <div class="col-md-2 el">
+                  <a href="#" class="field">
+                    <h4 class="brand">Porsche</h4>
+                    <p class="amount">51258</p>
+                  </a>
+                  <a href="#" class="field">
+                    <h4 class="brand">BMW</h4>
+                    <p class="amount">51258</p>
+                  </a>
+                  <a href="#" class="field">
+                    <h4 class="brand">Volkswagen</h4>
+                    <p class="amount">51258</p>
+                  </a>
+                  <a href="#" class="field">
+                    <h4 class="brand">Peugeot</h4>
+                    <p class="amount">51258</p>
+                  </a>
+
+                  <a href="#" class="field">
+                    <h4 class="all_br">All Makes</h4>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="btn-group d-flex asd" role="group">
+              <div class="btn-group">
+                <button id="btnGroupDrop1" type="button" class="btn dropdown-toggle disabled model" data-toggle="dropdown">
+                  Model
+                </button>
+                <div class="dropdown-menu z-depth-1" aria-labelledby="btnGroupDrop1">
+                  <a class="dropdown-item" href="#">Toyota</a>
+                  <a class="dropdown-item" href="#">Mazda</a>
+                </div>
+              </div>
+              <div class="btn-group">
+                <button id="btnGroupDrop1" type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                  From year
+                </button>
+                <div class="dropdown-menu z-depth-1" aria-labelledby="btnGroupDrop1">
+                  <a class="dropdown-item" href="#">Dropdown link</a>
+                  <a class="dropdown-item" href="#">Dropdown link</a>
+                </div>
+              </div>
+              <div class="frm">
+                <div class="md-form">
+                  <input type="text" id="minprice" class="form-control">
+                  <label for="minprice">Min price, $</label>
+                </div>
+              </div>
+              <div class="frm2">
+                <div class="md-form">
+                    <input type="text" id="maxprice" class="form-control">
+                    <label for="maxprice">Max price, $</label>
+                </div>
+              </div>
+              <button type="button" class="btn w-100 search-btn"><i class="fa fa-car" aria-hidden="true"></i>Search</button>
+            </div>
+
+
+
+          </div>
+          <p class="text-center adv-p"><a href="" class="adv-a">Advanced search</a></p>
+        </div>
+        <div class="col-md-3 pl-md-1 info">
+          <div class="bg-light z-depth-1 info-body">
+            <div class="row">
+              <div class="container">
+                <h1 class="text-center">info field</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Fearther Icons -->
+    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script>
+      feather.replace()
+    </script>
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/js/mdb.min.js"></script>
+  </body>
+</html>
 {% endblock %}

@@ -1,0 +1,191 @@
+/* #586069 */
+body {
+	background-color: #f3f3f3 !important;
+	height: 1300px;
+}
+
+.container {
+	max-width: 1230px !important;
+}
+
+.search {
+	margin-top: 40px;
+}
+
+.search-body {
+	padding: 15px;
+}
+
+.info {
+	margin-top: 40px;
+	width: 100%;
+}
+
+.el {
+	line-height: 5px;
+}
+
+.all_br {
+	font-size: 115%;
+	margin-top: 10px;
+	color: #f44336;
+	
+}
+
+.navbar-dark {
+	height: 4%;
+	background-color: #f44336;
+}
+
+.all_br:hover,
+.all_br:focus {
+	color: #586069;
+}
+
+.brand {
+	font-size: 115%;
+	font-weight: bold;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.fa {
+	margin-right: 10px;
+}
+
+.amount {
+	letter-spacing: 0px;
+	color: #586069;
+}
+
+.field {
+	color: black;
+	margin: 20px;
+}
+
+.field:hover,
+.field:focus {
+	background-color: #F44336 !important;
+	color: #F44336 !important;
+}
+
+.form-control {
+	width: 100% !important;
+	height: 100%;
+	border-radius: 0px !important;
+}
+
+.dropdown-menu {
+	max-height: 300px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+#btnGroupDrop1 {
+	width: 100% !important;
+}
+
+.frm {
+	width: 90%;
+	border-top: 1px solid #f44336;
+	border-bottom: 1px solid #f44336;
+}
+
+.frm2 {
+	width: 90%;
+	border-top: 1px solid #f44336;
+	border-bottom: 1px solid #f44336;
+	border-left: 1px solid #f44336;
+}
+
+.adv-a {
+	color: #f44336 !important;
+}
+
+.adv-a:hover,
+.adv-a:focus {
+	color: #586069 !important;
+}
+
+.adv-p {
+	padding-top: 15px;
+}
+
+.btn-group {
+	width: 100%;
+}
+
+.btn {
+	/*width: 26.7%;*/
+	width: 100%;
+	box-shadow: none !important;
+	background-color: #F44336 !important;
+	border-radius: 0px !important;
+}
+
+.btn:focus,
+.btn:active {
+	background-color: #D32F2F !important;
+}
+
+.btn:hover {
+	background-color: #FF5252 !important;
+}
+
+.search-btn {
+	letter-spacing: 1
+	font-size: 95% !important;
+}
+
+input {
+	overflow: hidden;
+	width: 5px !important;
+	padding-left: 10px !important;
+}
+
+.md-form {
+	width: 100%;
+	height: 25px;
+	bottom: 15px;
+	left: 0px;
+}
+
+.md-form label {
+	top: 4px !important;
+	font-size: 100% !important;
+	margin-left: 9px;
+}
+
+.md-form > .fa {
+	color: #757575 !important;
+}
+
+.asd {
+
+}
+
+.md-form .prefix~label {
+	margin-top: 13px;
+	margin-left: 35px !important;
+}
+
+.md-form input {
+	width: 100%;
+	border-bottom: 0 !important;
+}
+
+.md-form input:focus {
+	border-bottom: 0 !important;
+	box-shadow: 0 0px 0 0 #F44336 !important;
+}
+
+.md-form label.active {
+	margin-top: 10px;
+	font-size: 70% !important;
+	color: black !important;
+}
+
+.dropdown-menu.show {
+	border-radius: 0px;
+}
