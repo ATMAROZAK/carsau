@@ -15,7 +15,7 @@ def random(request):
 
     car_instances = []
     for x in range(1000):
-        car_instances.append(Car(owner=random.choice(owner),
+        car_instances.append(Car(owner=User.objects.get(first_name=random.choice(owner)),
                                     brand=random.choice(brand),
                                     car_model=random.choise(car_model),
                                     year=random.choice(range(1980, 2018)),
