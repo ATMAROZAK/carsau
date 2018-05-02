@@ -148,3 +148,5 @@ EMAIL_HOST_PASSWORD = 'System2048'
 EMAIL_USE_TLS = True
 
 REGISTRATION_FORM = 'mainapp.forms.MyRegForm'
+
+
