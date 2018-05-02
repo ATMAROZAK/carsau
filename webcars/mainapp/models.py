@@ -25,7 +25,12 @@ class Car(models.Model):
     price = models.IntegerField()
 
     objects = CarManager()
+
     def __unicode__(self):
         return "Brand: {0} Model: {1}".format(self.brand, self.car_model)
+
+    def __str__(self):
+        return self.id
+
 
 
