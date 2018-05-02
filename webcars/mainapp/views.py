@@ -17,7 +17,7 @@ def random_cars(request):
     for x in range(1000):
         car_instances.append(Car(owner=User.objects.get(first_name=random.choice(owner)),
                                     brand=random.choice(brand),
-                                    car_model=random.choise(car_model),
+                                    car_model=random.choice(car_model),
                                     year=random.choice(range(1980, 2018)),
                                     price=random.choice(range(5000, 100000))))
     Car.objects.bulk_create(car_instances)
