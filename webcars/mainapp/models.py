@@ -30,7 +30,7 @@ class Car(models.Model):
         return "Brand: {0} Model: {1}".format(self.brand, self.car_model)
 
     def __str__(self):
-        return self.id
+        return str(self.id)
 
 
 
