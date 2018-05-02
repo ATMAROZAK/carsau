@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 # Create your views here.
 
-def random(request):
+def random_cars(request):
     brand = ['toyota', 'mazda', 'opel', 'audi', 'lexus', 'peugeot', 'bmw', 'citroen', 'volvo', 'suzuki', 'jeep',
              'cadillac', 'ford', 'fiat', 'dodge', 'mazda', 'mercedes-benz', 'nissan']
 
