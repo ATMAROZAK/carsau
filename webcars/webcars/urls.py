@@ -21,5 +21,5 @@ urlpatterns = [
     #path('admin/', admin.site.urls),
     #path('', include('registration.backends.default.urls')),
     path('', include('mainapp.urls_default')),
-    path('generate', main_views.random())
+    path('generate', main_views.random)
 ]
