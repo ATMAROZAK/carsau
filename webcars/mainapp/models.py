@@ -12,17 +12,55 @@ class CustomUser(AbstractBaseUser):
 
 class CarManager(models.Manager):
     def create_new(self, owner, brand, car_model, year, price):
-        new_car = Car.objects.create(owner=owner, brand=brand, car_model=car_model, year=year, price=price)
+        new_car = Car.objects.create(owner=owner, make=brand, car_model=car_model, year=year, price=price)
         new_car.save()
         return new_car
 
 
 class Car(models.Model):
+
+    BODY_TYPE_CHOICES = (
+        ('s', 'sedan'),
+        ('c', 'coupe'),
+        ('h', 'hatch'),
+        ('w', 'wagon'),
+        ('su', 'suv'),
+        ('u', 'ute'),
+        ('m', 'mini van'),
+        ('ca', 'cabriolet')
+    )
+
+    TRANSMISSION_CHOICES = (
+        ('a', 'automatic drive'),
+        ('m', 'manual')
+    )
+
+    TRAIN_CHOICES = (
+        ('a', 'AWD'),
+        ('f', 'FWD'),
+        ('r', 'RWD')
+    )
+
+    FUEL_CHOICES = (
+        ('p', 'petrol'),
+        ('d', 'diesel'),
+        ('e', 'electricity')
+    )
+
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    brand = models.CharField(max_length=30, db_index=True)
+    make = models.CharField(max_length=30, db_index=True)
     car_model = models.CharField(max_length=30, db_index=True)
-    year = models.IntegerField()
-    price = models.IntegerField()
+    body_type = models.CharField(max_length=2, choices=BODY_TYPE_CHOICES)
+    year = models.PositiveSmallIntegerField(db_index=True)
+    kilometres = models.PositiveIntegerField(db_index=True)
+    reg_expirity = models.DateField()
+    reg_number = models.CharField(max_length=10)
+    transmission = models.CharField(max_length=1, choices=TRANSMISSION_CHOICES)
+    train = models.CharField(max_length=1, choices=TRAIN_CHOICES)
+    fuel_type = models.CharField(max_length=1, choices=FUEL_CHOICES)
+    color = models.CharField(max_length=20, default='white')
+
+    price = models.PositiveIntegerField(db_index=True)
 
     objects = CarManager()
 

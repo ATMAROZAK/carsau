@@ -5,7 +5,7 @@ from mainapp.models import Car
 
 
 class CarAdmin(admin.ModelAdmin):
-    list_display = ('owner', 'brand', 'car_model', 'year', 'price')
+    list_display = ('owner', 'make', 'car_model', 'year', 'price')
 
 
 admin.site.register(Car, CarAdmin)
