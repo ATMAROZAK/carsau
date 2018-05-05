@@ -20,31 +20,43 @@ class CarManager(models.Manager):
 class Car(models.Model):
 
     BODY_TYPE_CHOICES = (
-        ('s', 'sedan'),
-        ('c', 'coupe'),
-        ('h', 'hatch'),
-        ('w', 'wagon'),
-        ('su', 'suv'),
-        ('u', 'ute'),
-        ('m', 'mini van'),
-        ('ca', 'cabriolet')
+        ('s', 'Sedan'),
+        ('c', 'Coupe'),
+        ('h', 'Hatch'),
+        ('w', 'Wagon'),
+        ('su', 'SUV'),
+        ('u', 'Ute'),
+        ('m', 'Mini van'),
+        ('ca', 'Cabriolet')
     )
 
     TRANSMISSION_CHOICES = (
-        ('a', 'automatic drive'),
-        ('m', 'manual')
+        ('a', 'Automatic drive'),
+        ('m', 'Manual')
     )
 
     TRAIN_CHOICES = (
-        ('a', 'AWD'),
-        ('f', 'FWD'),
-        ('r', 'RWD')
+        ('a', 'All Wheel Drive'),
+        ('f', 'Forward Wheel Drive'),
+        ('r', 'Rear Wheel Drive')
     )
 
     FUEL_CHOICES = (
-        ('p', 'petrol'),
-        ('d', 'diesel'),
-        ('e', 'electricity')
+        ('p', 'Petrol'),
+        ('d', 'Diesel'),
+        ('e', 'Electric'),
+        ('pe', 'Petrol-Electric'),
+        ('pl', 'Petrol/LPG Autogas'),
+        ('l', 'LPG Autogas')
+    )
+
+    STATE_CHOICES = (
+        ('nsw', 'New South Wales'),
+        ('qld', 'Queensland'),
+        ('sa', 'South Australia'),
+        ('tas', 'Tasmania'),
+        ('vic', 'Victoria'),
+        ('wa', 'Western Australia')
     )
 
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -57,18 +69,23 @@ class Car(models.Model):
     reg_number = models.CharField(max_length=10)
     transmission = models.CharField(max_length=1, choices=TRANSMISSION_CHOICES)
     train = models.CharField(max_length=1, choices=TRAIN_CHOICES)
-    fuel_type = models.CharField(max_length=1, choices=FUEL_CHOICES)
+    fuel_type = models.CharField(max_length=2, choices=FUEL_CHOICES)
     color = models.CharField(max_length=20, default='white')
+    equipment = models.TextField(max_length=255, blank=True, null=True)
 
     price = models.PositiveIntegerField(db_index=True)
+    description = models.TextField(max_length=255, blank=True, null=True)
+
+    state = models.CharField(max_length=3, choices=STATE_CHOICES, null=True, blank=True)
+    postcode = models.PositiveSmallIntegerField(null=True, blank=True)
 
     objects = CarManager()
 
     def __unicode__(self):
-        return "Brand: {0} Model: {1}".format(self.brand, self.car_model)
+        return "Brand: {0} Model: {1}".format(self.make, self.car_model)
 
     def __str__(self):
-        return str(self.id)
+        return str(self.make + " " + self.car_model)
 
 
 
