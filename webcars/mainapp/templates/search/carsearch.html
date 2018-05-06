@@ -5,7 +5,7 @@
   </form>
   <ul>
   {% for car in filter.qs %}
-    <li>{{ car.make }} - {{ car.car_model }}</li>
+    <li>{{ car.make }} - {{ car.car_model }} - {{ car.year }} - {{ car.price }}$</li>
   {% endfor %}
   </ul>
 {% endblock %}
