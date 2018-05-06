@@ -18,8 +18,8 @@ from django.urls import path, include
 from mainapp import views as main_views
 
 urlpatterns = [
-    #path('admin/', admin.site.urls),
-    #path('', include('registration.backends.default.urls')),
     path('', include('mainapp.urls_default')),
-    path('generate', main_views.random_cars)
+    path('generate', main_views.random_cars),
+    path('search', main_views.car_search, name='car-search')
 ]
+

@@ -10,9 +10,28 @@ class CustomUser(AbstractBaseUser):
 
     USERNAME_FIELD = 'new_field'
 
+
 class CarManager(models.Manager):
-    def create_new(self, owner, brand, car_model, year, price):
-        new_car = Car.objects.create(owner=owner, make=brand, car_model=car_model, year=year, price=price)
+    def create_new(self, owner, make, car_model, year, price, body_type, kilometres, reg_expirity, reg_number, transmission,
+                   train, fuel_type, color, equipment, description, state, postcode):
+        new_car = Car.objects.create(owner=owner,
+                                     make=make,
+                                     car_model=car_model,
+                                     year=year,
+                                     price=price,
+                                     body_type=body_type,
+                                     kilometres=kilometres,
+                                     reg_expirity=reg_expirity,
+                                     reg_number=reg_number,
+                                     transmission=transmission,
+                                     train=train,
+                                     fuel_type=fuel_type,
+                                     color=color,
+                                     equipment=equipment,
+                                     description=description,
+                                     state=state,
+                                     postcode=postcode
+                                     )
         new_car.save()
         return new_car
 
