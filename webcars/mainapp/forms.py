@@ -1,5 +1,6 @@
 from registration.forms import RegistrationFormUniqueEmail
 from django import forms
+from django_filters import filterset
 from mainapp.models import CarMake, CarModel
 
 
@@ -21,3 +22,7 @@ class MyRegForm(RegistrationFormUniqueEmail):
 
         return user
 
+class CarSearchForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        #self.fields['make'].label = 'My text'
