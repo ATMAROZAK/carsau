@@ -1,10 +1,12 @@
-from django.conf.urls import include
+
 from django.conf.urls import url
+from django.urls import path, include
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.views.generic import TemplateView
 from registration.backends.default.views import RegistrationView
 from mainapp.forms import MyRegForm
+from mainapp import views as main_views
 
 
 class RegistrationViewUniqueEmail(RegistrationView):
@@ -12,9 +14,7 @@ class RegistrationViewUniqueEmail(RegistrationView):
 
 urlpatterns = [
 
-    url(r'^$',
-        TemplateView.as_view(template_name='index.html'),
-        name='index'),
+    path('', main_views.car_search, name='index'),
 
     url(r'^register/$', RegistrationViewUniqueEmail.as_view(),
         name='registration_register'),
@@ -33,4 +33,5 @@ urlpatterns = [
     url(r'^admin/',
         admin.site.urls,
         name='admin'),
+
 ]

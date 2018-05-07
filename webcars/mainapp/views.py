@@ -32,4 +32,4 @@ def random_cars(request):
 def car_search(request):
     car_list = Car.objects.all()
     car_filter = CarFilter(request.GET, queryset=car_list)
-    return render(request, 'search/carsearch.html', {'filter' : car_filter})
+    return render(request, 'cars/index.html', {'filter' : car_filter})

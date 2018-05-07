@@ -1,5 +1,7 @@
 from registration.forms import RegistrationFormUniqueEmail
 from django import forms
+from mainapp.models import CarMake, CarModel
+
 
 
 class MyRegForm(RegistrationFormUniqueEmail):
@@ -18,3 +20,4 @@ class MyRegForm(RegistrationFormUniqueEmail):
             user.save()
 
         return user
+
