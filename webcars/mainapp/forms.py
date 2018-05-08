@@ -25,4 +25,4 @@ class MyRegForm(RegistrationFormUniqueEmail):
 class CarSearchForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        #self.fields['make'].label = 'My text'
+        self.fields['car_model'].queryset = CarModel.objects.none()

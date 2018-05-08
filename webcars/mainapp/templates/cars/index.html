@@ -3,17 +3,17 @@
 {% load widget_tweaks %}
 
 {% block content %}
-  <form method="get">
+  <form method="get" id="carSearchForm" data-models-url="{% url 'ajax_load_car_models' %}" novalidate>
     <div class="well">
       <h4 style="margin-top: 0">Filter</h4>
       <div class="row">
         <div class="form-group col-sm-4 col-md-3">
           {{ filter.form.make.label_tag }}
-          {% render_field filter.form.make class="form-control" %}
+          {% render_field filter.form.make class="form-control" id="id_make" %}
         </div>
         <div class="form-group col-sm-4 col-md-3">
           {{ filter.form.car_model.label_tag }}
-          {% render_field filter.form.car_model class="form-control" %}
+          {% render_field filter.form.car_model class="form-control" id="id_model"%}
         </div>
         <div class="form-group col-sm-4 col-md-3">
           {{ filter.form.year.label_tag }}
@@ -55,4 +55,39 @@
       {% endfor %}
     </tbody>
   </table>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+    $( document ).ready(function() {
+        const url = $("#carSearchForm").attr("data-models-url");  // get the url of the `load_cities` view
+        const makeId = $(this).val();  // get the selected country ID from the HTML input
+        
+
+      $.ajax({                       // initialize an AJAX request
+        url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+        data: {
+          'make': makeId       // add the country id to the GET parameters
+        },
+        success: function (data) {   // `data` is the return of the `load_cities` view function
+          $("#id_model").html(data);  // replace the contents of the city input with the data that came from the server
+
+        }
+      });
+    });
+    $("#id_make").change(function () {
+        const url = $("#carSearchForm").attr("data-models-url");  // get the url of the `load_cities` view
+        const makeId = $(this).val();  // get the selected country ID from the HTML input
+
+      $.ajax({                       // initialize an AJAX request
+        url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+        data: {
+          'make': makeId       // add the country id to the GET parameters
+        },
+        success: function (data) {   // `data` is the return of the `load_cities` view function
+          $("#id_model").html(data);  // replace the contents of the city input with the data that came from the server
+
+        }
+      });
+
+    });
+  </script>
 {% endblock %}

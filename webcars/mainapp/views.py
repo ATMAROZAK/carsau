@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse
 import random
-from mainapp.models import Car
+from mainapp.models import Car, CarModel, CarMake
 from django.contrib.auth.models import User
 from mainapp.filters import CarFilter
 
@@ -33,3 +33,12 @@ def car_search(request):
     car_list = Car.objects.all()
     car_filter = CarFilter(request.GET, queryset=car_list)
     return render(request, 'cars/index.html', {'filter' : car_filter})
+
+
+def load_car_models(request):
+    make_id = request.GET.get('make')
+    if make_id is '':
+        models = CarModel.objects.none()
+    else:
+        models = CarModel.objects.filter(make_id=make_id).order_by('car_model')
+    return render(request, 'cars/model_dropdown_list_option.html', {'models': models})
