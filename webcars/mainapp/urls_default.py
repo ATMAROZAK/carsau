@@ -14,7 +14,7 @@ class RegistrationViewUniqueEmail(RegistrationView):
 
 urlpatterns = [
 
-    path('', main_views.car_search, name='index'),
+    path('', main_views.index, name='index'),
 
     url(r'^register/$', RegistrationViewUniqueEmail.as_view(),
         name='registration_register'),

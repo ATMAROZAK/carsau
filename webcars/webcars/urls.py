@@ -20,6 +20,7 @@ from mainapp import views as main_views
 urlpatterns = [
     path('', include('mainapp.urls_default')),
     path('generate', main_views.random_cars),
+    path('search', main_views.search, name='car-search'),
     path('ajax/load-car-models', main_views.load_car_models, name='ajax_load_car_models'),
 ]
 

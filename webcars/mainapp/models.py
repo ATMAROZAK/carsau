@@ -113,12 +113,13 @@ class CarMake(models.Model):
     def __str__(self):
         return self.make
 
+
+
 class CarModel(models.Model):
     make = models.ForeignKey(CarMake, on_delete=models.CASCADE)
     car_model = models.CharField(max_length=30)
 
     def __str__(self):
         return self.car_model
-
 
 

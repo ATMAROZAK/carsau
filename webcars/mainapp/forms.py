@@ -1,5 +1,6 @@
 from registration.forms import RegistrationFormUniqueEmail
 from django import forms
+from django_select2.forms import ModelSelect2Widget
 from django_filters import filterset
 from mainapp.models import CarMake, CarModel
 
@@ -21,8 +22,31 @@ class MyRegForm(RegistrationFormUniqueEmail):
             user.save()
 
         return user
-
+"""
 class CarSearchForm(forms.Form):
     def __init__(self, *args, **kwargs):
+        FILTER_CHOICES = (
+            ('Honda', 'Honda'),
+            ('VAZ', 'VAZ'),
+            ('assigned', 'Assigned'),
+            ('reopened', 'Reopened'),
+            ('closed', 'Closed'),
+            ('', 'Any'),
+        )
         super().__init__(*args, **kwargs)
-        self.fields['car_model'].queryset = CarModel.objects.none()
+        self.fields['make'].choices = FILTER_CHOICES"""
+
+class SimpleCarSearchForm(forms.Form):
+
+    make = forms.ModelChoiceField(queryset=CarMake.objects.all(), to_field_name="make")
+    car_model = forms.ModelChoiceField(queryset=CarModel.objects.none(), to_field_name="car_model")
+    price = forms.IntegerField()
+    year = forms.IntegerField()
+
+
+class AdvancedCarSearch(forms.Form):
+    make = forms.ModelChoiceField(queryset=CarMake.objects.all(), to_field_name="make")
+    car_model = forms.ModelChoiceField(queryset=CarModel.objects.none(), to_field_name="car_model")
+    price = forms.IntegerField()
+    year = forms.IntegerField()
+    color = forms.CharField()
