@@ -1,6 +1,6 @@
 from registration.forms import RegistrationFormUniqueEmail
 from django import forms
-from django_select2.forms import ModelSelect2Widget
+
 from django_filters import filterset
 from mainapp.models import CarMake, CarModel
 
