@@ -57,7 +57,7 @@ class AdvancedCarSearch(forms.Form):
         car_model = None
         if 'car_model' in kwargs:
             car_model = kwargs.pop('car_model')
-
+        print(car_model)
         color = None
         if 'color' in kwargs:
             color = kwargs.pop('color')
@@ -66,8 +66,8 @@ class AdvancedCarSearch(forms.Form):
         self.fields['make'].initial = CarMake.objects.get(make=make)
         self.fields['car_model'].queryset = CarModel.objects.filter(make__make=make)
 
-        if car_model is not None:
+        if car_model:
             self.fields['car_model'].initial = CarModel.objects.get(car_model=car_model)
 
-        if color is not None:
+        if color:
             self.fields['color'].initial = color
