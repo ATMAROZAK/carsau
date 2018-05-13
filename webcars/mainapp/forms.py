@@ -50,3 +50,24 @@ class AdvancedCarSearch(forms.Form):
     price = forms.IntegerField()
     year = forms.IntegerField()
     color = forms.CharField()
+
+    def __init__(self, *args, **kwargs):
+        make = kwargs.pop('make')
+
+        car_model = None
+        if 'car_model' in kwargs:
+            car_model = kwargs.pop('car_model')
+
+        color = None
+        if 'color' in kwargs:
+            color = kwargs.pop('color')
+
+        super(AdvancedCarSearch, self).__init__(*args, **kwargs)
+        self.fields['make'].initial = CarMake.objects.get(make=make)
+        self.fields['car_model'].queryset = CarModel.objects.filter(make__make=make)
+
+        if car_model is not None:
+            self.fields['car_model'].initial = CarModel.objects.get(car_model=car_model)
+
+        if color is not None:
+            self.fields['color'].initial = color

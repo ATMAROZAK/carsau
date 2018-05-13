@@ -48,28 +48,30 @@ def load_car_models(request):
 
 def search(request):
     q_objects = Q()
+
     make = request.GET.get('make')
     if make:
         q_objects &= Q(make__icontains=make)
-    model = request.GET.get('car_model')
-    if model:
-        q_objects &= Q(car_model__icontains=model)
+
+    car_model = request.GET.get('car_model')
+    if car_model:
+        q_objects &= Q(car_model__icontains=car_model)
+
     year = request.GET.get('year')
     if year:
         q_objects &= Q(year=int(year))
+
     price = request.GET.get('price')
     if price:
         q_objects &= Q(price=int(price))
+
     color = request.GET.get('color')
     if color:
         q_objects &= Q(color__icontains=color)
 
-   # cars = Car.objects.filter(make__icontains=make, car_model__icontains=model, year__exact=year, price=price)
-    print("make: {0}\nmodel: {1}\nyear: {2}\nprice: {3}".format(make, model, year, price))
-    print(q_objects)
     queryset = Car.objects.filter(q_objects)
-    print(queryset)
-    form = AdvancedCarSearch()
+    form = AdvancedCarSearch(make=make, car_model=car_model, color=color)
+
     return render(request, 'search/carsearch.html', {'form': form,
                                                      'cars' : queryset})
 
