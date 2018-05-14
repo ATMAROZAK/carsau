@@ -38,17 +38,26 @@ class CarSearchForm(forms.Form):
 
 class SimpleCarSearchForm(forms.Form):
 
-    make = forms.ModelChoiceField(queryset=CarMake.objects.all(), to_field_name="make", required=True)
-    car_model = forms.ModelChoiceField(queryset=CarModel.objects.none(), to_field_name="car_model")
-    price = forms.IntegerField()
-    year = forms.IntegerField()
-
-
-class AdvancedCarSearch(forms.Form):
+    YEAR_CHOICE = ([('', '--------')])
+    YEAR_CHOICE.extend(((str(x), x) for x in reversed(range(1980, 2019))))
     make = forms.ModelChoiceField(queryset=CarMake.objects.all(), to_field_name="make")
     car_model = forms.ModelChoiceField(queryset=CarModel.objects.none(), to_field_name="car_model")
-    price = forms.IntegerField()
-    year = forms.IntegerField()
+    min_year = forms.ChoiceField(choices=YEAR_CHOICE)
+    min_price = forms.IntegerField()
+    max_price = forms.IntegerField()
+
+class AdvancedCarSearch(forms.Form):
+    YEAR_CHOICE = ([('', '--------')])
+    YEAR_CHOICE.extend(((str(x), x) for x in reversed(range(1980, 2019))))
+
+    make = forms.ModelChoiceField(queryset=CarMake.objects.all(), to_field_name="make")
+    car_model = forms.ModelChoiceField(queryset=CarModel.objects.none(), to_field_name="car_model")
+
+    min_year = forms.ChoiceField(choices=YEAR_CHOICE)
+    max_year = forms.ChoiceField(choices=YEAR_CHOICE)
+
+    min_price = forms.IntegerField()
+    max_price = forms.IntegerField()
     color = forms.CharField()
 
     def __init__(self, *args, **kwargs):
@@ -65,6 +74,22 @@ class AdvancedCarSearch(forms.Form):
         if 'color' in kwargs:
             color = kwargs.pop('color')
 
+        min_year = None
+        if 'min_year' in kwargs:
+            min_year = kwargs.pop('min_year')
+
+        max_year = None
+        if 'max_year' in kwargs:
+            max_year = kwargs.pop('max_year')
+
+        min_price = None
+        if 'min_price' in kwargs:
+            min_price = kwargs.pop('min_price')
+
+        max_price = None
+        if 'max_price' in kwargs:
+            max_price = kwargs.pop('max_price')
+
         super(AdvancedCarSearch, self).__init__(*args, **kwargs)
         if make:
             self.fields['make'].initial = CarMake.objects.get(make=make)
@@ -72,6 +97,18 @@ class AdvancedCarSearch(forms.Form):
 
         if car_model:
             self.fields['car_model'].initial = CarModel.objects.get(car_model=car_model)
+
+        if min_year:
+            self.fields['min_year'].initial = min_year
+
+        if max_year:
+            self.fields['max_year'].initial = max_year
+
+        if min_price:
+            self.fields['min_price'].initial = min_price
+
+        if max_price:
+            self.fields['max_price'].initial = max_price
 
         if color:
             self.fields['color'].initial = color

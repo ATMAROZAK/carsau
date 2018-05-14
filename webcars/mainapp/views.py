@@ -57,20 +57,35 @@ def search(request):
     if car_model:
         q_objects &= Q(car_model__icontains=car_model)
 
-    year = request.GET.get('year')
-    if year:
-        q_objects &= Q(year=int(year))
+    min_year = request.GET.get('min_year')
+    max_year = request.GET.get('max_year')
+    if min_year and max_year:
+        if int(min_year) > int(max_year):
+            min_year, max_year = max_year, min_year
+    if min_year:
+        q_objects &= Q(year__gte=int(min_year))
+    if max_year:
+        q_objects &= Q(year__lte=int(max_year))
 
-    price = request.GET.get('price')
-    if price:
-        q_objects &= Q(price=int(price))
+    min_price = request.GET.get('min_price')
+    max_price = request.GET.get('max_price')
+    if min_price and max_price:
+        if int(min_price) > int(max_price):
+            min_price, max_price = max_price, min_price
+            #print("MIN: {0}\nMAX: {1}".format(min_price, max_price))
+    if min_price:
+        q_objects &= Q(price__gte=int(min_price))
+    if max_price:
+        q_objects &= Q(price__lte=int(max_price))
+
 
     color = request.GET.get('color')
     if color:
         q_objects &= Q(color__icontains=color)
 
     queryset = Car.objects.filter(q_objects)
-    form = AdvancedCarSearch(make=make, car_model=car_model, color=color)
+    form = AdvancedCarSearch(make=make, car_model=car_model, min_year=min_year, max_year=max_year, min_price=min_price,
+                             max_price=max_price, color=color)
 
     return render(request, 'search/carsearch.html', {'form': form,
                                                      'cars' : queryset})
