@@ -3,7 +3,7 @@ import random
 from mainapp.models import Car, CarModel, CarMake
 from django.contrib.auth.models import User
 from mainapp.filters import CarFilter
-from django.db.models import Q
+from django.db.models import Q, Min
 from mainapp.forms import SimpleCarSearchForm, AdvancedCarSearch
 
 # Create your views here.
@@ -38,7 +38,7 @@ def car_search(request):
 
 def load_car_models(request):
     make = request.GET.get('make')
-    print(make)
+    #print(make)
     if make is '':
         models = CarModel.objects.none()
     else:
@@ -46,16 +46,35 @@ def load_car_models(request):
     return render(request, 'cars/model_dropdown_list_option.html', {'models': models})
 
 
+def load_car_years(request):
+    YEAR_CHOICE = ['--------']
+    car_model = request.GET.get('car_model')
+    print("LOAD")
+    if car_model is not '':
+        car_start_year = Car.objects.filter(car_model__iexact=car_model).aggregate(Min('year'))['year__min']
+        YEAR_CHOICE.extend((str(x) for x in reversed(range(car_start_year, 2019))))
+    else:
+        make = request.GET.get('make')
+        if make is not '':
+            print("MAKE" + make)
+            car_start_year = Car.objects.filter(make__iexact=make).aggregate(Min('year'))['year__min']
+            YEAR_CHOICE.extend((str(x) for x in reversed(range(car_start_year, 2019))))
+        else:
+            YEAR_CHOICE.extend((str(x) for x in reversed(range(1980, 2019))))
+
+    return render(request, 'cars/years_dropdown_list.html', {'years' : YEAR_CHOICE})
+
+
 def search(request):
     q_objects = Q()
 
     make = request.GET.get('make')
     if make:
-        q_objects &= Q(make__icontains=make)
+        q_objects &= Q(make__iexact=make)
 
     car_model = request.GET.get('car_model')
     if car_model:
-        q_objects &= Q(car_model__icontains=car_model)
+        q_objects &= Q(car_model__iexact=car_model)
 
     min_year = request.GET.get('min_year')
     max_year = request.GET.get('max_year')

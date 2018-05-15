@@ -1,8 +1,8 @@
 from registration.forms import RegistrationFormUniqueEmail
 from django import forms
-
+from django.db.models import Max, Min
 from django_filters import filterset
-from mainapp.models import CarMake, CarModel
+from mainapp.models import CarMake, CarModel, Car
 
 
 
@@ -61,14 +61,24 @@ class AdvancedCarSearch(forms.Form):
     color = forms.CharField()
 
     def __init__(self, *args, **kwargs):
+        YEAR_CHOICE = ([('', '--------')])
+
 
         make = None
         if 'make' in kwargs:
             make = kwargs.pop('make')
+            if make:
+                car_start_year = Car.objects.filter(make__iexact=make).aggregate(Min('year'))['year__min']
+                YEAR_CHOICE.extend(((str(x), x) for x in reversed(range(car_start_year, 2019))))
+        else:
+            YEAR_CHOICE.extend(((str(x), x) for x in reversed(range(1980, 2019))))
 
         car_model = None
         if 'car_model' in kwargs:
             car_model = kwargs.pop('car_model')
+            if car_model:
+                car_start_year = Car.objects.filter(car_model__iexact=car_model).aggregate(Min('year'))['year__min']
+                YEAR_CHOICE.extend(((str(x), x) for x in reversed(range(car_start_year, 2019))))
 
         color = None
         if 'color' in kwargs:
@@ -91,6 +101,7 @@ class AdvancedCarSearch(forms.Form):
             max_price = kwargs.pop('max_price')
 
         super(AdvancedCarSearch, self).__init__(*args, **kwargs)
+
         if make:
             self.fields['make'].initial = CarMake.objects.get(make=make)
             self.fields['car_model'].queryset = CarModel.objects.filter(make__make=make)
@@ -103,6 +114,9 @@ class AdvancedCarSearch(forms.Form):
 
         if max_year:
             self.fields['max_year'].initial = max_year
+
+        self.fields['min_year'].choices = YEAR_CHOICE
+        self.fields['max_year'].choices = YEAR_CHOICE
 
         if min_price:
             self.fields['min_price'].initial = min_price

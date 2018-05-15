@@ -17,11 +17,11 @@
         </div>
         <div class="form-group col-sm-4 col-md-3">
           {{ form.min_year.label_tag }}
-          {% render_field form.min_year class="form-control" %}
+          {% render_field form.min_year class="form-control" id="id_min_year"%}
         </div>
         <div class="form-group col-sm-4 col-md-3">
           {{ form.max_year.label_tag }}
-          {% render_field form.max_year class="form-control" %}
+          {% render_field form.max_year class="form-control" id="id_max_year"%}
         </div>
         <div class="form-group col-sm-4 col-md-3">
           {{ form.min_price.label_tag }}
@@ -72,17 +72,50 @@
     <script>
 
     $("#id_make").change(function () {
-        const url = $("#carSearchForm").attr("data-models-url");  // get the url of the `load_cities` view
-        const makeId = $(this).val();  // get the selected country ID from the HTML input
+        const url = $("#carSearchForm").attr("data-models-url");
+        const makeId = $(this).val();
 
+      $.ajax({
+        url: url,
+        data: {
+          'make': makeId
+        },
+        success: function (data) {
+          $("#id_model").html(data);
+
+          get_years();
+        }
+      });
+      function get_years(){
+          const url = "{% url 'ajax_load_car_years' %}";  // get the url of the `load_cities` view
+          const car_model = $("#id_model").val();  // get the selected country ID from the HTML input
+          const make = $("#id_make").val();
+
+          $.ajax({
+            url: url,
+            data: {
+              'make' : make, 'car_model' : car_model
+            },
+            success: function (data) {
+              $("#id_min_year").html(data);
+              $("#id_max_year").html(data);
+            }
+          });
+      }
+
+    });
+    $("#id_model").change(function () {
+        const url = "{% url 'ajax_load_car_years' %}";  // get the url of the `load_cities` view
+        const car_model = $(this).val();  // get the selected country ID from the HTML input
+        const make = $("#id_make").val();
       $.ajax({                       // initialize an AJAX request
         url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
         data: {
-          'make': makeId       // add the country id to the GET parameters
+          'car_model': car_model, 'make' : make// add the country id to the GET parameters
         },
         success: function (data) {   // `data` is the return of the `load_cities` view function
-          $("#id_model").html(data);  // replace the contents of the city input with the data that came from the server
-
+          $("#id_min_year").html(data);  // replace the contents of the city input with the data that came from the server
+          $("#id_max_year").html(data);
         }
       });
 

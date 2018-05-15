@@ -22,5 +22,6 @@ urlpatterns = [
     path('generate', main_views.random_cars),
     path('search', main_views.search, name='car-search'),
     path('ajax/load-car-models', main_views.load_car_models, name='ajax_load_car_models'),
+    path('ajax/load-car-years', main_views.load_car_years, name='ajax_load_car_years'),
 ]
 
