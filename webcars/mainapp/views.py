@@ -47,7 +47,7 @@ def load_car_models(request):
 
 
 def load_car_years(request):
-    YEAR_CHOICE = ['--------']
+    YEAR_CHOICE = []
     car_model = request.GET.get('car_model')
     print("LOAD")
     if car_model is not '':

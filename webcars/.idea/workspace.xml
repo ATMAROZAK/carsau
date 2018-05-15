@@ -29,11 +29,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mainapp/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="61" column="13" lean-forward="true" selection-start-line="61" selection-start-column="13" selection-end-line="61" selection-end-column="13" />
+            <state relative-caret-position="415">
+              <caret line="57" column="26" lean-forward="true" selection-start-line="57" selection-start-column="26" selection-end-line="57" selection-end-column="26" />
               <folding>
                 <element signature="e#0#49#0" expanded="true" />
               </folding>
@@ -45,7 +45,7 @@
         <entry file="file://$PROJECT_DIR$/mainapp/templates/cars/years_dropdown_list.html">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret lean-forward="true" />
+              <caret column="35" selection-start-column="35" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -104,11 +104,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mainapp/templates/cars/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="76" selection-start-line="19" selection-start-column="76" selection-end-line="19" selection-end-column="76" />
+            <state relative-caret-position="244">
+              <caret line="45" column="24" lean-forward="true" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -149,11 +149,11 @@
         <option value="$PROJECT_DIR$/mainapp/urls_default.py" />
         <option value="$PROJECT_DIR$/webcars/urls.py" />
         <option value="$PROJECT_DIR$/mainapp/templates/cars/model_dropdown_list_option.html" />
-        <option value="$PROJECT_DIR$/mainapp/templates/cars/years_dropdown_list.html" />
         <option value="$PROJECT_DIR$/mainapp/forms.py" />
         <option value="$PROJECT_DIR$/mainapp/templates/search/carsearch.html" />
-        <option value="$PROJECT_DIR$/mainapp/views.py" />
         <option value="$PROJECT_DIR$/mainapp/templates/cars/index.html" />
+        <option value="$PROJECT_DIR$/mainapp/views.py" />
+        <option value="$PROJECT_DIR$/mainapp/templates/cars/years_dropdown_list.html" />
       </list>
     </option>
   </component>
@@ -622,13 +622,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mainapp/templates/cars/years_dropdown_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret lean-forward="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mainapp/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="519">
@@ -649,13 +642,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mainapp/views.py">
+    <entry file="file://$PROJECT_DIR$/mainapp/templates/search/carsearch.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="61" column="13" lean-forward="true" selection-start-line="61" selection-start-column="13" selection-end-line="61" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="49">
+          <caret line="71" selection-start-line="71" selection-end-line="122" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mainapp/templates/cars/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="45" column="24" lean-forward="true" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -666,17 +663,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mainapp/templates/search/carsearch.html">
+    <entry file="file://$PROJECT_DIR$/mainapp/templates/cars/years_dropdown_list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="49">
-          <caret line="71" selection-start-line="71" selection-end-line="122" selection-end-column="11" />
+        <state>
+          <caret column="35" selection-start-column="35" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mainapp/templates/cars/index.html">
+    <entry file="file://$PROJECT_DIR$/mainapp/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="76" selection-start-line="19" selection-start-column="76" selection-end-line="19" selection-end-column="76" />
+        <state relative-caret-position="415">
+          <caret line="57" column="26" lean-forward="true" selection-start-line="57" selection-start-column="26" selection-end-line="57" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#49#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
