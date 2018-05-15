@@ -64,7 +64,7 @@ class AdvancedCarSearch(forms.Form):
         YEAR_CHOICE = ([('', '--------')])
 
 
-        make = None
+        """make = None
         if 'make' in kwargs:
             make = kwargs.pop('make')
             if make:
@@ -78,7 +78,24 @@ class AdvancedCarSearch(forms.Form):
             car_model = kwargs.pop('car_model')
             if car_model:
                 car_start_year = Car.objects.filter(car_model__iexact=car_model).aggregate(Min('year'))['year__min']
+                YEAR_CHOICE.extend(((str(x), x) for x in reversed(range(car_start_year, 2019))))"""
+
+        make = None
+        car_model = None
+        if 'make' in kwargs and 'car_model' in kwargs: # Если в запросе есть make и car_model
+            car_model = kwargs.pop('car_model')
+            make = kwargs.pop('make')
+            if car_model and make: #Если make и car_model содержат инфу то берем год по модели
+                car_start_year = Car.objects.filter(car_model__iexact=car_model).aggregate(Min('year'))['year__min']
                 YEAR_CHOICE.extend(((str(x), x) for x in reversed(range(car_start_year, 2019))))
+            elif not make and car_model: # Если нет марки но есть модель машины то год по модели
+                car_start_year = Car.objects.filter(car_model__iexact=car_model).aggregate(Min('year'))['year__min']
+                YEAR_CHOICE.extend(((str(x), x) for x in reversed(range(car_start_year, 2019))))
+            elif not car_model and make: #Если нет модели но есть марка то год по марке
+                car_start_year = Car.objects.filter(make__iexact=make).aggregate(Min('year'))['year__min']
+                YEAR_CHOICE.extend(((str(x), x) for x in reversed(range(car_start_year, 2019))))
+            else:
+                YEAR_CHOICE.extend(((str(x), x) for x in reversed(range(1980, 2019))))
 
         color = None
         if 'color' in kwargs:
